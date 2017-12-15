@@ -44,6 +44,10 @@ function collectMissions()
             if( AllianceMissions[Mission.id].state != Mission.state && Mission.state == "green" )
             {
                 var notification = new Notification("Einsatz " + Mission.name + " beginnt", { body: "Der Einsatz startet. Schicke schnell ein Fahrzeug." });
+                
+                var MissionsReady = JSON.parse(localStorage.getItem("AllianceVehicleAlert-MissionsReady"));
+                MissionsReady.push(Mission.id);
+                localStorage.setItem( "AllianceVehicleAlert-MissionsReady", JSON.stringify(MissionsReady) );
             }
         }
     });
