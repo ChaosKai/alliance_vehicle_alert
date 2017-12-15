@@ -44,9 +44,9 @@
 //      -
 
         var AllianceVehicleAlert_AllowedVehicleTypes = [
-            "36",
-            "32",
-            "0",
-            "8",
-            "30"
+            "MTW",
+            "FuStw",
+            "LF 20",
+            "LF 20/16",
+            "HLF 20"
         ]
