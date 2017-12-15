@@ -2,7 +2,7 @@
 $(document).ready(function()
 {
     MissionID = $("#mission_reply_mission_id").val();
-    setInterval( collectMissions, 1000 );
+    setTimeout( checkAutomaticAlert, 1000 );
 });
 
 var MissionID;
