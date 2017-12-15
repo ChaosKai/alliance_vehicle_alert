@@ -48,6 +48,8 @@ function collectMissions()
                 var MissionsReady = JSON.parse(localStorage.getItem("AllianceVehicleAlert-MissionsReady"));
                 MissionsReady.push(Mission.id);
                 localStorage.setItem( "AllianceVehicleAlert-MissionsReady", JSON.stringify(MissionsReady) );
+                
+                var MissionPopup = window.open("https://www.leitstellenspiel.de/missions/" + Mission.id, "AllianceVehicleAlert", "width=101,height=101");
             }
         }
     });
