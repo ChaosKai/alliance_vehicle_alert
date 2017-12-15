@@ -12,7 +12,7 @@ function checkAutomaticAlert()
 {
     MissionsReady = JSON.parse(localStorage.getItem("AllianceVehicleAlert-MissionsReady"));
     
-    if( $.inArray( MissionID, MissionsReady ) )
+    if( $.inArray( MissionID, MissionsReady ) != -1 )
     {
         alertFirstVehicle();
     }
