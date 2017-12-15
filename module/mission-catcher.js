@@ -4,6 +4,7 @@ $(document).ready(function()
     setInterval( collectMissions, 1000 );
 });
 
+AllianceMissions = {};
 
 function collectMissions()
 {
