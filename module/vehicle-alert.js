@@ -29,7 +29,7 @@ function alertFirstVehicle()
          TimeLeft = (TimeLeft * 60) + parseInt(TimeValues[i]);
     }
     
-    AllianceVehicleAlert_AllowedVehicleTypes.foreach( function(VehicleType)
+    $.each( AllianceVehicleAlert_AllowedVehicleTypes, function(Key, VehicleType)
     {
         
         $("#vehicle_show_table_body_all").find(".vehicle_select_table_tr").each( function()
