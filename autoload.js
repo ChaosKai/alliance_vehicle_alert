@@ -38,3 +38,15 @@
             scriptElement.src = "https://rawgit.com/ChaosKai/alliance_vehicle_alert/" + AllianceVehicleAlert_Branch + "/module/vehicle-alert.js";
             document.body.appendChild(scriptElement);
         }
+        
+//      -
+//      -           Allowed Vehicle Types
+//      -
+
+        var AllowedVehicleTypes = [
+            "36",
+            "32",
+            "0",
+            "8",
+            "30"
+        ]
