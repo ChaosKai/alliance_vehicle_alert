@@ -1,11 +1,11 @@
 // ==UserScript==
-// @name        Fahrzeugtableau (BETA Channel)
+// @name        Alliance Vehicle Alert
 // @namespace   Leitstellenspiel
 // @description Export der Wachen & Fahrzeuge aus dem LSS zum Fahrzeugtableau
-// @downloadURL https://github.com/ChaosKai/fahrzeugtableau/raw/beta/tableau.user.js
+// @downloadURL https://github.com/ChaosKai/alliance_vehicle_alert/raw/master/userscript.user.js
 // @include     http*://www.leitstellenspiel.de/*
-// @version     2017-12-10-1926
-// @author      Eagle, ChaosKai93, lost
+// @version     1
+// @author      ChaosKai93
 // @grant       none
 // ==/UserScript==
 
