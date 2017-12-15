@@ -43,7 +43,7 @@
 //      -           Allowed Vehicle Types
 //      -
 
-        var AllowedVehicleTypes = [
+        var AllianceVehicleAlert_AllowedVehicleTypes = [
             "36",
             "32",
             "0",
