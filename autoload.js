@@ -4,7 +4,7 @@
 //  -
 //  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-        var AllianceVehicleAlert_Branch = "master";
+        var AllianceVehicleAlert_Branch = "beta-1";
 
 //      -
 //      -           Google Font
@@ -14,7 +14,24 @@
         styleElement.rel = "stylesheet";
         styleElement.href = "https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700";
         document.body.appendChild(styleElement);
+                
+//      -
+//      -           User Interface
+//      -
         
+        if (window.location.pathname === "/" || window.location.pathname === "/#")
+        {
+            var scriptElement = document.createElement("script");
+            scriptElement.type = "text/javascript";
+            scriptElement.src = "https://rawgit.com/ChaosKai/alliance_vehicle_alert/" + AllianceVehicleAlert_Branch + "/scripts/user-interface.js";
+            document.body.appendChild(scriptElement);
+                
+            var styleElement = document.createElement("link");
+            styleElement.rel = "stylesheet";
+            styleElement.href = "https://rawgit.com/ChaosKai/alliance_vehicle_alert/" + AllianceVehicleAlert_Branch + "/styles/user-interface.js";
+            document.head.appendChild(styleElement);
+        }
+
 //      -
 //      -           Mission Catcher
 //      -
@@ -23,7 +40,7 @@
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/alliance_vehicle_alert/" + AllianceVehicleAlert_Branch + "/module/mission-catcher.js";
+            scriptElement.src = "https://rawgit.com/ChaosKai/alliance_vehicle_alert/" + AllianceVehicleAlert_Branch + "/scripts/mission-catcher.js";
             document.body.appendChild(scriptElement);
         }
         
@@ -35,7 +52,7 @@
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/alliance_vehicle_alert/" + AllianceVehicleAlert_Branch + "/module/vehicle-alert.js";
+            scriptElement.src = "https://rawgit.com/ChaosKai/alliance_vehicle_alert/" + AllianceVehicleAlert_Branch + "/scripts/vehicle-alert.js";
             document.body.appendChild(scriptElement);
         }
         
