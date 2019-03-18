@@ -7,7 +7,7 @@
     
     $(document).ready( function()
     {
-        $("#row-main-template").prepand(
+        $("#row-main-template").prepend(
             $(`<div id="alliance-vehicle-alert" class="col-sm-12 overview_outer"></div>`)
         );
         
