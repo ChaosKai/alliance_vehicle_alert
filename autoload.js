@@ -23,12 +23,12 @@
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/alliance_vehicle_alert/" + AllianceVehicleAlert_Branch + "/scripts/user-interface.js";
+            scriptElement.src = "https://github.com/ChaosKai/alliance_vehicle_alert/raw/" + AllianceVehicleAlert_Branch + "/scripts/user-interface.js";
             document.body.appendChild(scriptElement);
                 
             var styleElement = document.createElement("link");
             styleElement.rel = "stylesheet";
-            styleElement.href = "https://rawgit.com/ChaosKai/alliance_vehicle_alert/" + AllianceVehicleAlert_Branch + "/styles/user-interface.css";
+            styleElement.href = "https://github.com/ChaosKai/alliance_vehicle_alert/raw/" + AllianceVehicleAlert_Branch + "/styles/user-interface.css";
             document.head.appendChild(styleElement);
         }
 
@@ -40,7 +40,7 @@
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/alliance_vehicle_alert/" + AllianceVehicleAlert_Branch + "/scripts/mission-catcher.js";
+            scriptElement.src = "https://github.com/ChaosKai/alliance_vehicle_alert/raw/" + AllianceVehicleAlert_Branch + "/scripts/mission-catcher.js";
             document.body.appendChild(scriptElement);
         }
         
@@ -52,7 +52,7 @@
         {
             var scriptElement = document.createElement("script");
             scriptElement.type = "text/javascript";
-            scriptElement.src = "https://rawgit.com/ChaosKai/alliance_vehicle_alert/" + AllianceVehicleAlert_Branch + "/scripts/vehicle-alert.js";
+            scriptElement.src = "https://github.com/ChaosKai/alliance_vehicle_alert/raw/" + AllianceVehicleAlert_Branch + "/scripts/vehicle-alert.js";
             document.body.appendChild(scriptElement);
         }
         
