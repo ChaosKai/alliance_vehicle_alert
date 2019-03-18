@@ -113,7 +113,7 @@
         {
             var foundFreeMissionWindow = false;
             
-            for( var missionWindowIndex = 1; missionWindowIndex <= MissionWindows.length; missionWindowIndex++ )
+            for( var missionWindowIndex = 0; missionWindowIndex < MissionWindows.length; missionWindowIndex++ )
             {
                 if( MissionWindows.eq(missionWindowIndex).attr("data-mission") == "none" )
                 {
@@ -121,7 +121,7 @@
                 }
             }
             
-            if( foundFreeMissionWindow !== false )
+            if( foundFreeMissionWindow !== false && MissionDetails.state == "green" && MissionDetails.alert == "none" )
             {
                 MissionWindows.eq(foundFreeMissionWindow).attr("data-mission", MissionId);
                 MissionWindows.eq(foundFreeMissionWindow).find("iframe").attr("src", `https://www.leitstellenspiel.de/missions/${MissionId}`);
