@@ -4,8 +4,6 @@
 //  -
 //  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
-        var AllianceVehicleAlert_Branch = "beta-1";
-
 //      -
 //      -           Google Font
 //      -
