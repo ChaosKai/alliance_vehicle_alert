@@ -12,7 +12,7 @@
     {
         MissionList = JSON.parse( localStorage.getItem("AllianceVehicleAlert-MissionList") );
         
-        if( typeof MissionList[MissionID] != "undefined" && MissionList[MissionID].alert == "initialized" )
+        if( typeof MissionList[MissionID] != "undefined" && MissionList[MissionID].alert == "pending" )
         {
             alertFirstVehicle();
             MissionList[MissionID].alert = "finished";
