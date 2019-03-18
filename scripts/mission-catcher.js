@@ -115,7 +115,7 @@
             
             for( var missionWindowIndex = 1; missionWindowIndex <= MissionWindows.length; missionWindowIndex++ )
             {
-                if( missionWindows.eq(missionWindowIndex).attr("data-mission") == "none" )
+                if( MissionWindows.eq(missionWindowIndex).attr("data-mission") == "none" )
                 {
                     foundFreeMissionWindow = missionWindowIndex;
                 }
@@ -123,15 +123,15 @@
             
             if( foundFreeMissionWindow !== false )
             {
-                missionWindows.eq(foundFreeMissionWindow).attr("data-mission", MissionId);
-                missionWindows.eq(foundFreeMissionWindow).find("iframe").attr("src", `https://www.leitstellenspiel.de/missions/${MissionId}`);
+                MissionWindows.eq(foundFreeMissionWindow).attr("data-mission", MissionId);
+                MissionWindows.eq(foundFreeMissionWindow).find("iframe").attr("src", `https://www.leitstellenspiel.de/missions/${MissionId}`);
                 
                 AllianceMissions[MissionId].alert = "done";
                 
                 setTimeout( function()
                 {
-                    missionWindows.eq(foundFreeMissionWindow).attr("data-mission", "none");
-                    missionWindows.eq(foundFreeMissionWindow).find("iframe").attr("src", ``);
+                    MissionWindows.eq(foundFreeMissionWindow).attr("data-mission", "none");
+                    MissionWindows.eq(foundFreeMissionWindow).find("iframe").attr("src", ``);
                 }, 5000);
             }
         });
