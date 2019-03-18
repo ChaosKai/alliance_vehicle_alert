@@ -11,5 +11,5 @@
 
 var scriptElement = document.createElement("script");
 scriptElement.type = "text/javascript";
-scriptElement.src = "https://rawgit.com/ChaosKai/alliance_vehicle_alert/master/autoload.js";
+scriptElement.src = "https://rawgit.com/ChaosKai/alliance_vehicle_alert/beta-1/autoload.js";
 document.body.appendChild(scriptElement);
