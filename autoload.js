@@ -28,7 +28,7 @@
                 
             var styleElement = document.createElement("link");
             styleElement.rel = "stylesheet";
-            styleElement.href = "https://rawgit.com/ChaosKai/alliance_vehicle_alert/" + AllianceVehicleAlert_Branch + "/styles/user-interface.js";
+            styleElement.href = "https://rawgit.com/ChaosKai/alliance_vehicle_alert/" + AllianceVehicleAlert_Branch + "/styles/user-interface.css";
             document.head.appendChild(styleElement);
         }
 
