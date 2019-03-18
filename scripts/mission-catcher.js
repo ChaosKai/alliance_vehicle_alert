@@ -1,63 +1,140 @@
 
-$(document).ready(function()
-{
-    setInterval( collectMissions, 1000 );
-});
-
-AllianceMissions = {};
-
-function collectMissions()
-{
-    var UpdatedMissions = {};
-
-    $("#mission_list_alliance").find(".missionSideBarEntry").each(function()
+    $(document).ready(function()
     {
-        var MissionID = $(this).attr("mission_id");
-        var MissionType = $(this).attr("mission_type_id");
-        var MissionName = $(this).find(".map_position_mover").text().replace("[Verband] ", "");
-        var MissionState;
+        setTimeout( function() {
+            setInterval( function() {
+                collectMissions();
+            }, 1000);
+        }, 200);
 
-        if( $(this).children("div").hasClass("mission_panel_green") )
-        {
-            MissionState = "green";
-        }
-        else if( $(this).children("div").hasClass("mission_panel_yellow") )
-        {
-            MissionState = "yellow";
-        }
-        else
-        {
-            MissionState = "red";
-        }
+        setTimeout( function() {
+            setInterval( function() {
+                markMissionsForOpening();
+            }, 500);
+        }, 300);
 
-        UpdatedMissions[MissionID] = {
-            "id":    MissionID,
-            "type":  MissionType,
-            "state": MissionState,
-            "name":  MissionName
-        };
+        setTimeout( function() {
+            setInterval( function() {
+                openMissions();
+            }, 500);
+        }, 600);
     });
 
-    $.each(UpdatedMissions, function(Key, Mission)
+
+
+//  - --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+//  -
+//  -           Collect Missions
+//  -
+//  - --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+    function collectMissions()
     {
-        if( typeof AllianceMissions[Mission.id] != "undefined" )
+        let AllianceMissions = JSON.parse( localStorage.getItem("AllianceVehicleAlert-MissionList") );
+        let UpdatedMissions  = {};
+
+        $("#mission_list_alliance").find(".missionSideBarEntry").each(function()
         {
-            if( AllianceMissions[Mission.id].state != Mission.state && Mission.state == "green" )
+            var MissionID = $(this).attr("mission_id");
+            var MissionType = $(this).attr("mission_type_id");
+            var MissionName = $(this).find(".map_position_mover").text().replace("[Verband] ", "");
+            var MissionState = "";
+            var MissionAlert = "none";
+
+            if( $(this).children("div").hasClass("mission_panel_green") )
             {
-                var notification = new Notification("Einsatz " + Mission.name + " beginnt", { body: "Der Einsatz startet. Schicke schnell ein Fahrzeug." });
+                MissionState = "green";
+            }
+            else if( $(this).children("div").hasClass("mission_panel_yellow") )
+            {
+                MissionState = "yellow";
+            }
+            else
+            {
+                MissionState = "red";
+            }
+
+            if( typeof AllianceMissions[MissionID] != "undefined" )
+            {
+                var MissionAlert = AllianceMissions[MissionID].alert;
+            }
+
+            UpdatedMissions[MissionID] = {
+                "id"    : MissionID,
+                "type"  : MissionType,
+                "state" : MissionState,
+                "name"  : MissionName,
+                "alert" : MissionAlert
+            };
+        });
+
+        localStorage.setItem( "AllianceVehicleAlert-MissionList", JSON.stringify(AllianceMissions) );
+    }
+
+
+//  - --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+//  -
+//  -           Mark Mission for opening
+//  -
+//  - --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+    function markMissionsForOpening()
+    {
+        let AllianceMissions = JSON.parse( localStorage.getItem("AllianceVehicleAlert-MissionList") );
+        
+        $.each(AllianceMissions, function(MissionId, MissionDetails)
+        {
+            if( MissionDetails.state == "green" && MissionDetails.alert == "none" )
+            {
+                AllianceMissions[MissionId].alert = "pending";
+            }
+        });
+
+        localStorage.setItem( "AllianceVehicleAlert-MissionList", JSON.stringify(AllianceMissions) );
+    }
+
+//  - --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+//  -
+//  -           Action List
+//  -
+//  - --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+
+    function openMissions()
+    {
+        let AllianceMissions = localStorage.getItem("AllianceVehicleAlert-MissionList");
+        var MissionWindows   = $("#alliance-vehicle-alert").find(".ava-mission-window");
+        
+        if( AllianceMissions == null)
+        {
+            AllianceMissions = {};
+        }
+        
+        $.each(AllianceMissions, function(MissionId, MissionDetails)
+        {
+            var foundFreeMissionWindow = false;
+            
+            for( var missionWindowIndex = 1; missionWindowIndex <= MissionWindows.length; missionWindowIndex++ )
+            {
+                if( missionWindows.eq(missionWindowIndex).attr("data-mission") == "none" )
+                {
+                    foundFreeMissionWindow = missionWindowIndex;
+                }
+            }
+            
+            if( foundFreeMissionWindow !== false )
+            {
+                missionWindows.eq(foundFreeMissionWindow).attr("data-mission", MissionId);
+                missionWindows.eq(foundFreeMissionWindow).find("iframe").attr("src", `https://www.leitstellenspiel.de/missions/${MissionId}`);
                 
-                var MissionsReady = JSON.parse(localStorage.getItem("AllianceVehicleAlert-MissionsReady"));
-                MissionsReady.push(Mission.id);
-                localStorage.setItem( "AllianceVehicleAlert-MissionsReady", JSON.stringify(MissionsReady) );
+                AllianceMissions[MissionId].alert = "done";
                 
-                var MissionPopup = window.open("https://www.leitstellenspiel.de/missions/" + Mission.id, "AllianceVehicleAlert", "width=101,height=101");
                 setTimeout( function()
                 {
-                    MissionPopup.close();
+                    missionWindows.eq(foundFreeMissionWindow).attr("data-mission", "none");
+                    missionWindows.eq(foundFreeMissionWindow).find("iframe").attr("src", ``);
                 }, 5000);
             }
-        }
-    });
-
-    AllianceMissions = UpdatedMissions;
-}
+        });
+        
+        localStorage.setItem( "AllianceVehicleAlert-MissionList", JSON.stringify(AllianceMissions) );
+    }
