@@ -6,15 +6,18 @@
     });
 
     var MissionID;
-    var MissionsList;
+    var MissionList;
 
     function checkAutomaticAlert()
     {
-        MissionsList = JSON.parse( localStorage.getItem("AllianceVehicleAlert-MissionsList") );
+        MissionList = JSON.parse( localStorage.getItem("AllianceVehicleAlert-MissionList") );
         
-        if( $.inArray( MissionID, MissionsList ) != -1 )
+        if( typeof MissionList[MissionID] != "undefined" && MissionList[MissionID].alert == "initialized" )
         {
             alertFirstVehicle();
+            MissionList[MissionID].alert = "finished";
+            
+            localStorage.setItem("AllianceVehicleAlert-MissionList", JSON.stringify(MissionList));
         }
     }
 
@@ -42,8 +45,8 @@
                     $("#vehicle_checkbox_" + VehicleID).click();
                     FoundVehicle = true;
                     
-                    MissionsList.splice( MissionsList.indexOf(MissionID), 1 );
-                    localStorage.setItem( "AllianceVehicleAlert-MissionsList", JSON.stringify(MissionsList) );
+                    MissionList.splice( MissionList.indexOf(MissionID), 1 );
+                    localStorage.setItem( "AllianceVehicleAlert-MissionList", JSON.stringify(MissionList) );
                     
                     $("#mission_alarm_btn").first().click();
                 }
