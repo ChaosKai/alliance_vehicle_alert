@@ -101,7 +101,7 @@
 
     function openMissions()
     {
-        let AllianceMissions = localStorage.getItem("AllianceVehicleAlert-MissionList");
+        let AllianceMissions = JSON.parse( localStorage.getItem("AllianceVehicleAlert-MissionList") );
         var MissionWindows   = $("#alliance-vehicle-alert").find(".ava-mission-window");
         
         if( AllianceMissions == null)
