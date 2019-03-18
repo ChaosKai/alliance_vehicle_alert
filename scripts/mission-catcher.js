@@ -68,7 +68,7 @@
             };
         });
 
-        localStorage.setItem( "AllianceVehicleAlert-MissionList", JSON.stringify(AllianceMissions) );
+        localStorage.setItem( "AllianceVehicleAlert-MissionList", JSON.stringify(UpdatedMissions) );
     }
 
 
