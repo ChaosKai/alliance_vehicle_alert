@@ -86,7 +86,6 @@
         {
             if( MissionDetails.state == "green" && MissionDetails.alert == "none" )
             {
-                console.log(`Mission ${MissionId} kann alarmiert werden.`);
                 AllianceMissions[MissionId].alert = "pending";
             }
         });
@@ -119,19 +118,14 @@
             
             if( foundFreeMissionWindow !== false && MissionDetails.state == "green" && MissionDetails.alert == "pending" )
             {
-                console.log(`Open Mission ${MissionId} in Window ${foundFreeMissionWindow}`);
                 MissionWindows.eq(foundFreeMissionWindow).attr("data-mission", MissionId);
                 MissionWindows.eq(foundFreeMissionWindow).find("iframe").attr("src", `https://www.leitstellenspiel.de/missions/${MissionId}`);
-                
-                AllianceMissions[MissionId].alert = "done";
                 
                 setTimeout( function()
                 {
                     MissionWindows.eq(foundFreeMissionWindow).attr("data-mission", "none");
                     MissionWindows.eq(foundFreeMissionWindow).find("iframe").attr("src", ``);
-                }, 5000);
+                }, 10000);
             }
         });
-        
-        localStorage.setItem( "AllianceVehicleAlert-MissionList", JSON.stringify(AllianceMissions) );
     }
