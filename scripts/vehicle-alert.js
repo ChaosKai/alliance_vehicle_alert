@@ -45,7 +45,7 @@
                     $("#vehicle_checkbox_" + VehicleID).click();
                     FoundVehicle = true;
                     
-                    MissionList.splice( MissionList.indexOf(MissionID), 1 );
+                    MissionList[MissionID].alert = "done";
                     localStorage.setItem( "AllianceVehicleAlert-MissionList", JSON.stringify(MissionList) );
                     
                     $("#mission_alarm_btn").first().click();
