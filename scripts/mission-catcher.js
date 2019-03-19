@@ -123,8 +123,6 @@
                 MissionWindows.eq(foundFreeMissionWindow).attr("data-mission", MissionId);
                 MissionWindows.eq(foundFreeMissionWindow).find("iframe").attr("src", `https://www.leitstellenspiel.de/missions/${MissionId}`);
                 
-                AllianceMissions[MissionId].alert = "done";
-                
                 setTimeout( function()
                 {
                     MissionWindows.eq(foundFreeMissionWindow).attr("data-mission", "none");
@@ -132,6 +130,4 @@
                 }, 5000);
             }
         });
-        
-        localStorage.setItem( "AllianceVehicleAlert-MissionList", JSON.stringify(AllianceMissions) );
     }
