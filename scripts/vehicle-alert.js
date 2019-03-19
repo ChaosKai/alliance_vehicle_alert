@@ -23,6 +23,7 @@
 
     function alertFirstVehicle()
     {
+        console.log(`AlertFirstVehicle()`);
         var TimeLeft   = 0;
         var FoundVehicle = false;
         var TimeValues = $("#mission_countdown_" + MissionID).text().split(":");
@@ -40,11 +41,14 @@
                 var VehicleID = $(this).attr("id").replace("vehicle_element_content_", "");
                 var VehicleDistanceTime = $("#vehicle_sort_" + VehicleID).attr("sortvalue");
                 
+                console.log(`${VehicleDistanceTime}`);
+                console.log(`${FoundVehicle}`);
+                
                 if( $(this).attr("vehicle_type") == VehicleType && VehicleDistanceTime < TimeLeft && !FoundVehicle )
                 {
                     $("#vehicle_checkbox_" + VehicleID).click();
                     FoundVehicle = true;
-                    
+                    console.log(`alert = "done"`);
                     MissionList[MissionID].alert = "done";
                     localStorage.setItem( "AllianceVehicleAlert-MissionList", JSON.stringify(MissionList) );
                     
