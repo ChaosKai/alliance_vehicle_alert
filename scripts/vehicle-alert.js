@@ -13,8 +13,10 @@
     {
         MissionList = JSON.parse( localStorage.getItem("AllianceVehicleAlert-MissionList") );
         
-        console.log(`${typeof MissionList[MissionID]}`);
-        console.log(`${MissionList[MissionID].alert}`);
+        if( typeof MissionList[MissionID] == "undefined" )
+        {
+            return;
+        }
         
         if( typeof MissionList[MissionID] != "undefined" && MissionList[MissionID].alert == "pending" )
         {
