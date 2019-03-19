@@ -119,7 +119,7 @@
             
             if( foundFreeMissionWindow !== false && MissionDetails.state == "green" && MissionDetails.alert == "pending" )
             {
-                consoloe.log(`Open Mission ${MissionId} in Window ${foundFreeMissionWindow}`);
+                console.log(`Open Mission ${MissionId} in Window ${foundFreeMissionWindow}`);
                 MissionWindows.eq(foundFreeMissionWindow).attr("data-mission", MissionId);
                 MissionWindows.eq(foundFreeMissionWindow).find("iframe").attr("src", `https://www.leitstellenspiel.de/missions/${MissionId}`);
                 
