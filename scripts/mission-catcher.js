@@ -110,7 +110,7 @@
             
             for( var missionWindowIndex = 0; missionWindowIndex < MissionWindows.length; missionWindowIndex++ )
             {
-                if( MissionWindows.eq(missionWindowIndex).attr("data-mission") == "none" )
+                if( foundFreeMissionWindow == false && MissionWindows.eq(missionWindowIndex).attr("data-mission") == "none" )
                 {
                     foundFreeMissionWindow = missionWindowIndex;
                 }
