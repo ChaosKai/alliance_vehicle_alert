@@ -106,7 +106,16 @@
         
         $.each(AllianceMissions, function(MissionId, MissionDetails)
         {
-            var foundFreeMissionWindow = false;
+            if( MissionDetails.state != "green" ) {
+                return;
+            }
+            
+            if( MissionDetails.alert != "pending" ) {
+                return;
+            }
+            
+            var foundFreeMissionWindow   = false;
+            var MissionWindowAlreadyOpen = false;
             
             for( var missionWindowIndex = 0; missionWindowIndex < MissionWindows.length; missionWindowIndex++ )
             {
@@ -114,18 +123,28 @@
                 {
                     foundFreeMissionWindow = missionWindowIndex;
                 }
+                
+                if( MissionWindows.eq(missionWindowIndex).attr("data-mission") == MissionId )
+                {
+                    MissionWindowAlreadyOpen = true;
+                }
             }
             
-            if( foundFreeMissionWindow !== false && MissionDetails.state == "green" && MissionDetails.alert == "pending" )
-            {
-                MissionWindows.eq(foundFreeMissionWindow).attr("data-mission", MissionId);
-                MissionWindows.eq(foundFreeMissionWindow).find("iframe").attr("src", `https://www.leitstellenspiel.de/missions/${MissionId}`);
-                
-                setTimeout( function()
-                {
-                    MissionWindows.eq(foundFreeMissionWindow).attr("data-mission", "none");
-                    MissionWindows.eq(foundFreeMissionWindow).find("iframe").attr("src", ``);
-                }, 10000);
+            if( foundFreeMissionWindow == false ) {
+                return;
             }
+            
+            if( MissionWindowAlreadyOpen == true ) {
+                return;
+            }
+            
+            MissionWindows.eq(foundFreeMissionWindow).attr("data-mission", MissionId);
+            MissionWindows.eq(foundFreeMissionWindow).find("iframe").attr("src", `https://www.leitstellenspiel.de/missions/${MissionId}`);
+            
+            setTimeout( function()
+            {
+                MissionWindows.eq(foundFreeMissionWindow).attr("data-mission", "none");
+                MissionWindows.eq(foundFreeMissionWindow).find("iframe").attr("src", ``);
+            }, 10000);
         });
     }
