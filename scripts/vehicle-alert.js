@@ -1,6 +1,7 @@
 
     $(document).ready(function()
     {
+        console.log("ready");
         MissionID = $("#mission_reply_mission_id").val();
         setTimeout( checkAutomaticAlert, 1000 );
     });
