@@ -28,8 +28,8 @@
             {
                 width                   : 750%;
                 height                  : 750%;
-                
-                transform               : scale(0.25);
+              
+                transform               : scaleY(0.133);
 
                 border                  : 0px;
                 outline                 : 0px;
